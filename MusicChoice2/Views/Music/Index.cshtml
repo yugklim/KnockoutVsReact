@@ -1,0 +1,31 @@
+﻿@using Newtonsoft.Json
+@using React.Web.Mvc
+@model MusicChoice.ViewModels.MusicViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div>
+    @Html.React("MusicFilters", new
+    {
+        albums = Model.Filters.Albums,
+        casts = Model.Filters.Casts,
+        composers = Model.Filters.Composers,
+        genres = Model.Filters.Genres,
+        performers = Model.Filters.Performers,
+        
+        albumID = Model.Filters.AlbumID,
+        castID = Model.Filters.CastID,
+        composerID = Model.Filters.ComposerID,
+        genreID = Model.Filters.GenreID,
+        performerID = Model.Filters.PerformerID,
+       
+        onFilterChanged = "pipeline.onFilterChanged"
+    }, "containerId")
+    
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="@Url.Content("~/Scripts/react.js")"></script>
+    <script src="@Url.Content("~/Scripts/react-dom.js")"></script>
+    <script src="@Url.Content("~/Scripts/MusicChoice/MusicFilters.jsx")"></script>
+</div>

@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MusicChoiceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MusicChoiceModelStoreContainer">
+          <EntitySet Name="Album" EntityType="MusicChoiceModel.Store.Album" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cast" EntityType="MusicChoiceModel.Store.Cast" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Composer" EntityType="MusicChoiceModel.Store.Composer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Concert" EntityType="MusicChoiceModel.Store.Concert" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Genre" EntityType="MusicChoiceModel.Store.Genre" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Music" EntityType="MusicChoiceModel.Store.Music" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MusicAlbum" EntityType="MusicChoiceModel.Store.MusicAlbum" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MusicCast" EntityType="MusicChoiceModel.Store.MusicCast" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MusicConcert" EntityType="MusicChoiceModel.Store.MusicConcert" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MusicPerformer" EntityType="MusicChoiceModel.Store.MusicPerformer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Performer" EntityType="MusicChoiceModel.Store.Performer" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Music_Composer" Association="MusicChoiceModel.Store.FK_Music_Composer">
+            <End Role="Composer" EntitySet="Composer" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Genre" Association="MusicChoiceModel.Store.FK_Music_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicAlbum_Album" Association="MusicChoiceModel.Store.FK_MusicAlbum_Album">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="MusicAlbum" EntitySet="MusicAlbum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicAlbum_Music" Association="MusicChoiceModel.Store.FK_MusicAlbum_Music">
+            <End Role="Music" EntitySet="Music" />
+            <End Role="MusicAlbum" EntitySet="MusicAlbum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicCast_Cast" Association="MusicChoiceModel.Store.FK_MusicCast_Cast">
+            <End Role="Cast" EntitySet="Cast" />
+            <End Role="MusicCast" EntitySet="MusicCast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicCast_Music" Association="MusicChoiceModel.Store.FK_MusicCast_Music">
+            <End Role="Music" EntitySet="Music" />
+            <End Role="MusicCast" EntitySet="MusicCast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicConcert_Concert" Association="MusicChoiceModel.Store.FK_MusicConcert_Concert">
+            <End Role="Concert" EntitySet="Concert" />
+            <End Role="MusicConcert" EntitySet="MusicConcert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicConcert_Music" Association="MusicChoiceModel.Store.FK_MusicConcert_Music">
+            <End Role="Music" EntitySet="Music" />
+            <End Role="MusicConcert" EntitySet="MusicConcert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicPerformer_Music" Association="MusicChoiceModel.Store.FK_MusicPerformer_Music">
+            <End Role="Music" EntitySet="Music" />
+            <End Role="MusicPerformer" EntitySet="MusicPerformer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MusicPerformer_Performer" Association="MusicChoiceModel.Store.FK_MusicPerformer_Performer">
+            <End Role="Performer" EntitySet="Performer" />
+            <End Role="MusicPerformer" EntitySet="MusicPerformer" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="AlbumID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Album" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cast">
+          <Key>
+            <PropertyRef Name="CastID" />
+          </Key>
+          <Property Name="CastID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cast" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Composer">
+          <Key>
+            <PropertyRef Name="ComposerID" />
+          </Key>
+          <Property Name="ComposerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Composer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Concert">
+          <Key>
+            <PropertyRef Name="CastID" />
+          </Key>
+          <Property Name="CastID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Concert" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Genre" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Music">
+          <Key>
+            <PropertyRef Name="MusicID" />
+          </Key>
+          <Property Name="MusicID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Music" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComposerID" Type="int" />
+          <Property Name="GenreID" Type="int" />
+        </EntityType>
+        <EntityType Name="MusicAlbum">
+          <Key>
+            <PropertyRef Name="MusicID" />
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="MusicID" Type="int" Nullable="false" />
+          <Property Name="AlbumID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusicCast">
+          <Key>
+            <PropertyRef Name="CastID" />
+            <PropertyRef Name="MusicID" />
+          </Key>
+          <Property Name="CastID" Type="int" Nullable="false" />
+          <Property Name="MusicID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusicConcert">
+          <Key>
+            <PropertyRef Name="MusicID" />
+            <PropertyRef Name="ConcertID" />
+          </Key>
+          <Property Name="MusicID" Type="int" Nullable="false" />
+          <Property Name="ConcertID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusicPerformer">
+          <Key>
+            <PropertyRef Name="MusicID" />
+            <PropertyRef Name="PerformerID" />
+          </Key>
+          <Property Name="MusicID" Type="int" Nullable="false" />
+          <Property Name="PerformerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Performer">
+          <Key>
+            <PropertyRef Name="PerformerID" />
+          </Key>
+          <Property Name="PerformerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Performer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Music_Composer">
+          <End Role="Composer" Type="MusicChoiceModel.Store.Composer" Multiplicity="0..1" />
+          <End Role="Music" Type="MusicChoiceModel.Store.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composer">
+              <PropertyRef Name="ComposerID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="ComposerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Genre">
+          <End Role="Genre" Type="MusicChoiceModel.Store.Genre" Multiplicity="0..1" />
+          <End Role="Music" Type="MusicChoiceModel.Store.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicAlbum_Album">
+          <End Role="Album" Type="MusicChoiceModel.Store.Album" Multiplicity="1" />
+          <End Role="MusicAlbum" Type="MusicChoiceModel.Store.MusicAlbum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="AlbumID" />
+            </Principal>
+            <Dependent Role="MusicAlbum">
+              <PropertyRef Name="AlbumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicAlbum_Music">
+          <End Role="Music" Type="MusicChoiceModel.Store.Music" Multiplicity="1" />
+          <End Role="MusicAlbum" Type="MusicChoiceModel.Store.MusicAlbum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Music">
+              <PropertyRef Name="MusicID" />
+            </Principal>
+            <Dependent Role="MusicAlbum">
+              <PropertyRef Name="MusicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicCast_Cast">
+          <End Role="Cast" Type="MusicChoiceModel.Store.Cast" Multiplicity="1" />
+          <End Role="MusicCast" Type="MusicChoiceModel.Store.MusicCast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cast">
+              <PropertyRef Name="CastID" />
+            </Principal>
+            <Dependent Role="MusicCast">
+              <PropertyRef Name="CastID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicCast_Music">
+          <End Role="Music" Type="MusicChoiceModel.Store.Music" Multiplicity="1" />
+          <End Role="MusicCast" Type="MusicChoiceModel.Store.MusicCast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Music">
+              <PropertyRef Name="MusicID" />
+            </Principal>
+            <Dependent Role="MusicCast">
+              <PropertyRef Name="MusicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicConcert_Concert">
+          <End Role="Concert" Type="MusicChoiceModel.Store.Concert" Multiplicity="1" />
+          <End Role="MusicConcert" Type="MusicChoiceModel.Store.MusicConcert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Concert">
+              <PropertyRef Name="CastID" />
+            </Principal>
+            <Dependent Role="MusicConcert">
+              <PropertyRef Name="ConcertID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicConcert_Music">
+          <End Role="Music" Type="MusicChoiceModel.Store.Music" Multiplicity="1" />
+          <End Role="MusicConcert" Type="MusicChoiceModel.Store.MusicConcert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Music">
+              <PropertyRef Name="MusicID" />
+            </Principal>
+            <Dependent Role="MusicConcert">
+              <PropertyRef Name="MusicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicPerformer_Music">
+          <End Role="Music" Type="MusicChoiceModel.Store.Music" Multiplicity="1" />
+          <End Role="MusicPerformer" Type="MusicChoiceModel.Store.MusicPerformer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Music">
+              <PropertyRef Name="MusicID" />
+            </Principal>
+            <Dependent Role="MusicPerformer">
+              <PropertyRef Name="MusicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MusicPerformer_Performer">
+          <End Role="Performer" Type="MusicChoiceModel.Store.Performer" Multiplicity="1" />
+          <End Role="MusicPerformer" Type="MusicChoiceModel.Store.MusicPerformer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Performer">
+              <PropertyRef Name="PerformerID" />
+            </Principal>
+            <Dependent Role="MusicPerformer">
+              <PropertyRef Name="PerformerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MusicChoiceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MusicChoiceEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Albums" EntityType="MusicChoiceModel.Album" />
+          <EntitySet Name="Casts" EntityType="MusicChoiceModel.Cast" />
+          <EntitySet Name="Composers" EntityType="MusicChoiceModel.Composer" />
+          <EntitySet Name="Concerts" EntityType="MusicChoiceModel.Concert" />
+          <EntitySet Name="Genres" EntityType="MusicChoiceModel.Genre" />
+          <EntitySet Name="Musics" EntityType="MusicChoiceModel.Music" />
+          <EntitySet Name="Performers" EntityType="MusicChoiceModel.Performer" />
+          <AssociationSet Name="FK_Music_Composer" Association="MusicChoiceModel.FK_Music_Composer">
+            <End Role="Composer" EntitySet="Composers" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Genre" Association="MusicChoiceModel.FK_Music_Genre">
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="MusicAlbum" Association="MusicChoiceModel.MusicAlbum">
+            <End Role="Album" EntitySet="Albums" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="MusicCast" Association="MusicChoiceModel.MusicCast">
+            <End Role="Cast" EntitySet="Casts" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="MusicConcert" Association="MusicChoiceModel.MusicConcert">
+            <End Role="Concert" EntitySet="Concerts" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="MusicPerformer" Association="MusicChoiceModel.MusicPerformer">
+            <End Role="Music" EntitySet="Musics" />
+            <End Role="Performer" EntitySet="Performers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="AlbumID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Album1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Musics" Relationship="MusicChoiceModel.MusicAlbum" FromRole="Album" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Cast">
+          <Key>
+            <PropertyRef Name="CastID" />
+          </Key>
+          <Property Name="CastID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Cast1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Musics" Relationship="MusicChoiceModel.MusicCast" FromRole="Cast" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Composer">
+          <Key>
+            <PropertyRef Name="ComposerID" />
+          </Key>
+          <Property Name="ComposerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Composer1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Musics" Relationship="MusicChoiceModel.FK_Music_Composer" FromRole="Composer" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Concert">
+          <Key>
+            <PropertyRef Name="CastID" />
+          </Key>
+          <Property Name="CastID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Concert1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Musics" Relationship="MusicChoiceModel.MusicConcert" FromRole="Concert" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Genre1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Musics" Relationship="MusicChoiceModel.FK_Music_Genre" FromRole="Genre" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Music">
+          <Key>
+            <PropertyRef Name="MusicID" />
+          </Key>
+          <Property Name="MusicID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Music1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ComposerID" Type="Int32" />
+          <Property Name="GenreID" Type="Int32" />
+          <NavigationProperty Name="Composer" Relationship="MusicChoiceModel.FK_Music_Composer" FromRole="Music" ToRole="Composer" />
+          <NavigationProperty Name="Genre" Relationship="MusicChoiceModel.FK_Music_Genre" FromRole="Music" ToRole="Genre" />
+          <NavigationProperty Name="Albums" Relationship="MusicChoiceModel.MusicAlbum" FromRole="Music" ToRole="Album" />
+          <NavigationProperty Name="Casts" Relationship="MusicChoiceModel.MusicCast" FromRole="Music" ToRole="Cast" />
+          <NavigationProperty Name="Concerts" Relationship="MusicChoiceModel.MusicConcert" FromRole="Music" ToRole="Concert" />
+          <NavigationProperty Name="Performers" Relationship="MusicChoiceModel.MusicPerformer" FromRole="Music" ToRole="Performer" />
+        </EntityType>
+        <EntityType Name="Performer">
+          <Key>
+            <PropertyRef Name="PerformerID" />
+          </Key>
+          <Property Name="PerformerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Performer1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Musics" Relationship="MusicChoiceModel.MusicPerformer" FromRole="Performer" ToRole="Music" />
+        </EntityType>
+        <Association Name="FK_Music_Composer">
+          <End Role="Composer" Type="MusicChoiceModel.Composer" Multiplicity="0..1" />
+          <End Role="Music" Type="MusicChoiceModel.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Composer">
+              <PropertyRef Name="ComposerID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="ComposerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Genre">
+          <End Role="Genre" Type="MusicChoiceModel.Genre" Multiplicity="0..1" />
+          <End Role="Music" Type="MusicChoiceModel.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MusicAlbum">
+          <End Role="Album" Type="MusicChoiceModel.Album" Multiplicity="*" />
+          <End Role="Music" Type="MusicChoiceModel.Music" Multiplicity="*" />
+        </Association>
+        <Association Name="MusicCast">
+          <End Role="Cast" Type="MusicChoiceModel.Cast" Multiplicity="*" />
+          <End Role="Music" Type="MusicChoiceModel.Music" Multiplicity="*" />
+        </Association>
+        <Association Name="MusicConcert">
+          <End Role="Concert" Type="MusicChoiceModel.Concert" Multiplicity="*" />
+          <End Role="Music" Type="MusicChoiceModel.Music" Multiplicity="*" />
+        </Association>
+        <Association Name="MusicPerformer">
+          <End Role="Music" Type="MusicChoiceModel.Music" Multiplicity="*" />
+          <End Role="Performer" Type="MusicChoiceModel.Performer" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MusicChoiceModelStoreContainer" CdmEntityContainer="MusicChoiceEntities">
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="Album1" ColumnName="Album" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Casts">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Cast">
+              <MappingFragment StoreEntitySet="Cast">
+                <ScalarProperty Name="CastID" ColumnName="CastID" />
+                <ScalarProperty Name="Cast1" ColumnName="Cast" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Composers">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Composer">
+              <MappingFragment StoreEntitySet="Composer">
+                <ScalarProperty Name="ComposerID" ColumnName="ComposerID" />
+                <ScalarProperty Name="Composer1" ColumnName="Composer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Concerts">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Concert">
+              <MappingFragment StoreEntitySet="Concert">
+                <ScalarProperty Name="CastID" ColumnName="CastID" />
+                <ScalarProperty Name="Concert1" ColumnName="Concert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="Genre1" ColumnName="Genre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musics">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Music">
+              <MappingFragment StoreEntitySet="Music">
+                <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+                <ScalarProperty Name="Music1" ColumnName="Music" />
+                <ScalarProperty Name="ComposerID" ColumnName="ComposerID" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Performers">
+            <EntityTypeMapping TypeName="MusicChoiceModel.Performer">
+              <MappingFragment StoreEntitySet="Performer">
+                <ScalarProperty Name="PerformerID" ColumnName="PerformerID" />
+                <ScalarProperty Name="Performer1" ColumnName="Performer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="MusicAlbum" TypeName="MusicChoiceModel.MusicAlbum" StoreEntitySet="MusicAlbum">
+            <EndProperty Name="Album">
+              <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+            </EndProperty>
+            <EndProperty Name="Music">
+              <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MusicCast" TypeName="MusicChoiceModel.MusicCast" StoreEntitySet="MusicCast">
+            <EndProperty Name="Cast">
+              <ScalarProperty Name="CastID" ColumnName="CastID" />
+            </EndProperty>
+            <EndProperty Name="Music">
+              <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MusicConcert" TypeName="MusicChoiceModel.MusicConcert" StoreEntitySet="MusicConcert">
+            <EndProperty Name="Concert">
+              <ScalarProperty Name="CastID" ColumnName="ConcertID" />
+            </EndProperty>
+            <EndProperty Name="Music">
+              <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MusicPerformer" TypeName="MusicChoiceModel.MusicPerformer" StoreEntitySet="MusicPerformer">
+            <EndProperty Name="Music">
+              <ScalarProperty Name="MusicID" ColumnName="MusicID" />
+            </EndProperty>
+            <EndProperty Name="Performer">
+              <ScalarProperty Name="PerformerID" ColumnName="PerformerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
