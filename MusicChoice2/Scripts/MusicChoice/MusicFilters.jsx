@@ -33,7 +33,7 @@
         var onResetFilters = this.onResetFilters;
         var musicFilters = this;
 
-        var renderDropDown = function(title, id, selectedValue, onChangeHandler, optionIndex, optionValue) {
+        var renderDropDown = function(title, id, values, selectedValue, onChangeHandler, optionIndex, optionValue) {
             return  <div>{title + ':'}
                 <select id={id} value={selectedValue} onChange={onChangeHandler}>
                     {
@@ -56,27 +56,12 @@
                         })
                     }
             </div>
-            <div>Performer:
-                <select id="performers" value={musicFilters.state.selected.performerID||-1} value={musicFilters.state.selected.performerID||-1} onChange={onFilterChanged.bind(musicFilters, 'performerID')}>
-                    {
-                        this.state.performers.map(function (val, idx) {
-                            return <option key={idx} value={val["performerID"]}>{val["Performer1"]}
-                            </option>
-                            })
-                        }
-                </select>
-            </div>
-            <div>Composers:
-                <select id="composers" value={musicFilters.state.selected.composerID||-1} onChange={onFilterChanged.bind(musicFilters, 'composerID')}>
-                    {
-                        this.state.composers.map(function (val, idx) {
-                            return <option key={idx} value={val["ComposerID"]}>{val["Composer1"]}
-                            </option>
-                            })
-                        }
-                </select>
-            </div>
-
+            {
+                renderDropDown("Performers", "performers", this.state.performers, musicFilters.state.selected.performerID, null, "PerformerID", "Performer1" )
+            }
+            {
+                renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, null, "ComposerID", "Composer1" )
+            }
 
             <div>
                 <input type="button" value="Reset Filters" onClick={onResetFilters.bind(musicFilters)}/>
