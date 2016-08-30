@@ -34,7 +34,7 @@
         var musicFilters = this;
 
         var renderDropDown = function(title, id, values, selectedValue, onChangeHandler, optionIndex, optionValue) {
-            return  <div>{title + ':'}
+            return  (values !== undefined && values !== null)? <div>{title + ':'}
                 <select id={id} value={selectedValue} onChange={onChangeHandler}>
                     {
                         values.map(function (val, idx) {
@@ -42,10 +42,11 @@
                             })
                         }
                 </select>
-            </div>
+            </div>:<div>No data</div>
         };
 
-        return <div>
+        return (this.state.genres !== undefined && this.state.genres !== null)?
+        <div>AA
             <div style={{"float":"left"}}>Genres:
                 {
                     this.state.genres.map(function (val, idx) {
@@ -62,11 +63,15 @@
             {
                 renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, null, "ComposerID", "Composer1" )
             }
+            {
+                renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, null, "AlbumID", "Album1" )
+            }
 
             <div>
                 <input type="button" value="Reset Filters" onClick={onResetFilters.bind(musicFilters)}/>
             </div>
-        </div>;
+        </div>:
+            <div>No data</div>;
     },
 
     componentDidMount: function() {

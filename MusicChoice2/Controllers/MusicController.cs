@@ -45,7 +45,11 @@ namespace MusicChoice.Controllers
                 };
 
             return View(musicViewModel);
-            
+        }
+
+        public ActionResult RenderOnClient()
+        {
+            return View();
         }
     }
 }

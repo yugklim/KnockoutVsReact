@@ -146,10 +146,12 @@
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="Controllers\MusicController.cs" />
+    <Compile Include="Controllers\MusicWebAPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValuesController1.cs" />
     <Compile Include="ViewModels\MusicFiltersViewModel.cs" />
     <Compile Include="ViewModels\MusicViewModel.cs" />
   </ItemGroup>
@@ -187,6 +189,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\MusicChoice\MusicFilters.jsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\MusicChoice\MusicFiltersOnClient.jsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Music\RenderOnClient.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
