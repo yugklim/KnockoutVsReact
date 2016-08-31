@@ -13,14 +13,14 @@
             , musics: this.props.musics
             , albums: this.props.albums
             , composers: this.props.composers
-            , concerts: this.props.concerts
+            , casts: this.props.casts
             , selected: {
                   performerID: this.props.performerID
                 , genreID: this.props.genreID
                 , musicID: this.props.musicID
                 , albumID: this.props.albumID
                 , composerID: this.props.composerID
-                , concertID: this.props.concertID
+                , castID: this.props.castID
             }
         }
     },
@@ -46,8 +46,8 @@
         };
 
         return (this.state.genres !== undefined && this.state.genres !== null)?
-        <div>AA
-            <div style={{"float":"left"}}>Genres:
+        <div>
+            <div>Genres:
                 {
                     this.state.genres.map(function (val, idx) {
                         return <div key={idx}>{val["Genre"]}
@@ -65,6 +65,9 @@
             }
             {
                 renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, null, "AlbumID", "Album1" )
+            }
+            {
+                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, null, "CastID", "Cast1" )
             }
 
             <div>
