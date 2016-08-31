@@ -2,36 +2,33 @@
 
     $.ajax({
         type: "GET",
-        url: this.props.url + '?' + buildQueryString(cloneOfStateLoadParameters),
+        url: '/api/MusicWebAPI',
         dataType: "text",
         success: function (response)
         {
-            this.onLoadFinished();
             var data = JSON.parse(response);
-            this.setState({
-                data: data,
-                loadParameters: cloneOfStateLoadParameters
-            });
-            this.tryToJumpToId();
-            this.raiseEvent(this.props.onDataLoadedOK, this.state.loadParameters);
-        }.bind(this),
-        error: function ()
+            musicChoice.filters = ReactDOM.render(
+                <MusicFilters
+                    albums = {data.Filters.Albums}
+                    genres = {data.Filters.Genres}
+                    casts = {data.Filters.Casts}
+                    composers = {data.Filters.Composers}
+                    performers = {data.Filters.Performers}
+
+                    albumID = {data.Filters.AlbumID}
+                    castID = {data.Filters.CastID}
+                    composerID = {data.Filters.ComposerID}
+                    genreID = {data.Filters.GenreID}
+                    performerID = {data.Filters.PerformerID}
+                    onFilterChanged = "pipeline.onFilterChanged"
+                />,
+                document.getElementById('musicFiltersOnClient')
+            );
+        },
+        error: function (error)
         {
-            this.onLoadFinished();
-            if (this.props.loadErrorHandler){
-                this.props.loadErrorHandler(xhr);
-            }
-            this.raiseEvent(this.props.onDataLoadedFault, this.state.loadParameters);
-        }.bind(this)
+            alert(error)
+        }
     });
-
-    musicChoice.filters = ReactDOM.render(
-        <MusicFilters
-
-
-            onFilterChanged = "pipeline.onFilterChanged"
-        />,
-        document.getElementById('musicFiltersOnClient')
-    );
 
 }(window.musicChoice = window.musicChoice || {}));

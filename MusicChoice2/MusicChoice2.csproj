@@ -151,7 +151,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValuesController1.cs" />
     <Compile Include="ViewModels\MusicFiltersViewModel.cs" />
     <Compile Include="ViewModels\MusicViewModel.cs" />
   </ItemGroup>
@@ -160,8 +159,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\react-dom.js" />
     <Content Include="Scripts\react.js" />
+    <Content Include="Scripts\underscore-min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
