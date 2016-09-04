@@ -35,7 +35,7 @@
 
         var renderDropDown = function(title, id, values, selectedValue, onChangeHandler, optionIndex, optionValue) {
             return  (values !== undefined && values !== null)? <div>{title + ':'}
-                <select id={id} value={selectedValue} onChange={onChangeHandler}>
+                <select id={id} value={selectedValue || -1} onChange={onFilterChanged.bind(musicFilters, 'w')}>
                     {
                         values.map(function (val, idx) {
                                 return <option key={idx} value={val[optionIndex]}>{val[optionValue]}</option>
@@ -67,7 +67,7 @@
                 renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, null, "AlbumID", "Album1" )
             }
             {
-                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, null, "CastID", "Cast1" )
+                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, null, "CastID", "Cast1")
             }
 
             <div>
@@ -78,13 +78,13 @@
     },
 
     componentDidMount: function() {
-        this.selected = {
-            introducerID: this.props.introducerID
-            , companyStatusTypeID: null
-            , countryID: null
-            , dealerID: null
-            , page: 1
-        };
+        //this.selected = {
+        //    introducerID: this.props.introducerID
+        //    , companyStatusTypeID: null
+        //    , countryID: null
+        //    , dealerID: null
+        //    , page: 1
+        //};
     },
 
 // end of instantiation methods
@@ -123,12 +123,13 @@
     },
 
     onFilterChanged: function(selectedParameter, e) {
-        var selected = _.clone(this.state.selected);
-        selected[selectedParameter] = parseInt($(e.currentTarget).val()) || null;
-        this.setState(
-            {selected: selected}
-            , this.raiseEvent.bind(this, eval(this.props.onFilterChanged))
-        );
+        alert('s');
+        //var selected = _.clone(this.state.selected);
+        //selected[selectedParameter] = parseInt($(e.currentTarget).val()) || null;
+        //this.setState(
+        //    {selected: selected}
+        //    , this.raiseEvent.bind(this, eval(this.props.onFilterChanged))
+        //);
     },
 
     onResetFilters: function() {

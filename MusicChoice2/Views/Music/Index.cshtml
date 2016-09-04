@@ -19,12 +19,16 @@
         castID = Model.Filters.CastID,
         composerID = Model.Filters.ComposerID,
         genreID = Model.Filters.GenreID,
-        performerID = Model.Filters.PerformerID
+        performerID = Model.Filters.PerformerID,
+        onFilterChanged = "pipeline.onFilterChanged"
     }, 
     "containerId")
     
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
     <script src="@Url.Content("~/Scripts/underscore-min.js")"></script>
     <script src="@Url.Content("~/Scripts/react.js")"></script>
     <script src="@Url.Content("~/Scripts/react-dom.js")"></script>
     <script src="@Url.Content("~/Scripts/MusicChoice/MusicFilters.jsx")"></script>
+    
+    @Html.ReactInitJavaScript();
 </div>
