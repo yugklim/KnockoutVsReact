@@ -49,6 +49,9 @@
     <Compile Include="Album.cs">
       <DependentUpon>MusicChoice.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetMusics_Result.cs">
+      <DependentUpon>MusicChoice.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\AlbumService.cs" />
     <Compile Include="Cast.cs">
       <DependentUpon>MusicChoice.tt</DependentUpon>
