@@ -13,14 +13,14 @@
             , musics: this.props.musics
             , albums: this.props.albums
             , composers: this.props.composers
-            , casts: this.props.casts
+            , concerts: this.props.concerts
             , selected: {
                   performerID: this.props.performerID
                 , genreID: this.props.genreID
                 , musicID: this.props.musicID
                 , albumID: this.props.albumID
                 , composerID: this.props.composerID
-                , castID: this.props.castID
+                , concertID: this.props.concertID
             }
         }
     },
@@ -33,58 +33,73 @@
         var onResetFilters = this.onResetFilters;
         var musicFilters = this;
 
-        var renderDropDown = function(title, id, values, selectedValue, optionIndex, optionValue, selectedParameter) {
-            return  (values !== undefined && values !== null)? <div>{title + ':'}
-                <select id={id} value={selectedValue || -1} onChange={onFilterChanged.bind(musicFilters, selectedParameter)}>
+        var renderDropDown = function(title, id, selectedValue, onChangeHandler, optionIndex, optionValue) {
+            return  <div>{title + ':'}
+                <select id={id} value={selectedValue} onChange={onChangeHandler}, values>
                     {
                         values.map(function (val, idx) {
                                 return <option key={idx} value={val[optionIndex]}>{val[optionValue]}</option>
                             })
                         }
                 </select>
-            </div>:<div>No data</div>
+            </div>
         };
 
-        return (this.state.genres !== undefined && this.state.genres !== null)?
-        <div>
-            <div>Genres:
+        return <div>
+            <div style={{"float":"left"}}>Genres:
                 {
                     this.state.genres.map(function (val, idx) {
-                        return <div key={idx}>{val["Genre"]}
-                            <input checked={musicFilters.areNullablesEqual(val["GenreID"], musicFilters.state.selected.genreID)} type="radio" name="genres" value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
-                            {val["Genre1"]} ({val["Musics"]})
+                        return <div key={idx}>{val["Genre"]}:
+                            <input checked={musicFilters.areNullablesEqual(val["GenreID"], musicFilters.state.selected.genreID)} type="radio" name="genres" value={val["GenreID"]||null} onChange={onFilterChanged.bind(genreFilters, 'genreID')}/>
+                            {val["Genre"]} ({val["Musics"]})
                         </div>
                         })
                     }
             </div>
+            <div>Performer:
+                <select id="performers" value={musicFilters.state.selected.performerID||-1} value={musicFilters.state.selected.performerID||-1} onChange={onFilterChanged.bind(musicFilters, 'performerID')}>
+                    {
+                        this.state.performers.map(function (val, idx) {
+                            return <option key={idx} value={val["performerID"]}>{val["Performer"]}
+                            </option>
+                            })
+                        }
+                </select>
+            </div>
+            <div>Composers:
+                <select id="composers" value={musicFilters.state.selected.composerID||-1} onChange={onFilterChanged.bind(musicFilters, 'composerID')}>
+                    {
+                        this.state.composers.map(function (val, idx) {
+                            return <option key={idx} value={val["ComposerID"]}>{val["Composer"]}
+                            </option>
+                            })
+                        }
+                </select>
+            </div>
             {
-                renderDropDown("Performers", "performers", this.state.performers, musicFilters.state.selected.performerID,  "PerformerID", "Performer1",  "performerID" )
+                renderDropDown("Concerts", conserts, musicFilters.state.selected.concertID, onFilterChanged.bind(musicFilters, 'concertID'), "ConcertID", "Concert")
             }
             {
-                renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, "ComposerID", "Composer1",  "composerID" )
+                renderDropDown("Albums", conserts, musicFilters.state.selected.albumID, onFilterChanged.bind(musicFilters, 'albumID'), "AlbumID", "Album")
             }
             {
-                renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, "AlbumID", "Album1",  "albumID" )
-            }
-            {
-                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast1", "castID")
+                renderDropDown("Musics", conserts, musicFilters.state.selected.musictID, onFilterChanged.bind(musicFilters, 'musicID'), "MusicID", "Music")
             }
 
             <div>
-                <input type="button" value="Reset Filters" onClick={onResetFilters.bind(musicFilters)}/>
+                <input type="button" value="Reset Filters" onClick={onResetFilters.bind(pipelineFilters)}/>
             </div>
-        </div>:
-            <div>No data</div>;
+        </div>;
     },
 
     componentDidMount: function() {
-        //this.selected = {
-        //    introducerID: this.props.introducerID
-        //    , companyStatusTypeID: null
-        //    , countryID: null
-        //    , dealerID: null
-        //    , page: 1
-        //};
+        this.selected = {
+            introducerID: this.props.introducerID
+            , companyStatusTypeID: null
+            , countryID: null
+            , dealerID: null
+            , page: 1
+        };
     },
 
 // end of instantiation methods

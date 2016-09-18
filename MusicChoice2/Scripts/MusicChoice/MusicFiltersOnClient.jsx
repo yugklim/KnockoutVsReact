@@ -20,7 +20,6 @@
                     composerID = {data.Filters.ComposerID}
                     genreID = {data.Filters.GenreID}
                     performerID = {data.Filters.PerformerID}
-                    onFilterChanged = "pipeline.onFilterChanged"
                 />,
                 document.getElementById('musicFiltersOnClient')
             );

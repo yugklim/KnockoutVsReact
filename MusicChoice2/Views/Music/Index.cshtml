@@ -20,7 +20,8 @@
         composerID = Model.Filters.ComposerID,
         genreID = Model.Filters.GenreID,
         performerID = Model.Filters.PerformerID,
-        onFilterChanged = "pipeline.onFilterChanged"
+
+        onFilterChanged = "music.onFilterChanged"
     }, 
     "containerId")
     
@@ -29,6 +30,7 @@
     <script src="@Url.Content("~/Scripts/react.js")"></script>
     <script src="@Url.Content("~/Scripts/react-dom.js")"></script>
     <script src="@Url.Content("~/Scripts/MusicChoice/MusicFilters.jsx")"></script>
+    <script src="@Url.Content("~/Scripts/MusicChoice/MusicChoice.js")"></script>
     
     @Html.ReactInitJavaScript();
 </div>

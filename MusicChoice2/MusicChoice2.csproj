@@ -160,6 +160,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\MusicChoice\MusicChoice.js" />
     <Content Include="Scripts\react-dom.js" />
     <Content Include="Scripts\react.js" />
     <Content Include="Scripts\underscore-min.js" />
