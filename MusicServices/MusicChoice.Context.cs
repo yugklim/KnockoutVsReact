@@ -12,6 +12,9 @@ namespace MusicServices
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class MusicChoiceEntities : DbContext
     {
@@ -32,5 +35,10 @@ namespace MusicServices
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Music> Musics { get; set; }
         public DbSet<Performer> Performers { get; set; }
+    
+        public virtual ObjectResult<GetMusics_Result> GetMusics(ObjectParameter genreID, ObjectParameter composerID, ObjectParameter castID, ObjectParameter albumID, ObjectParameter performerID)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMusics_Result>("GetMusics", genreID, composerID, castID, albumID, performerID);
+        }
     }
 }
