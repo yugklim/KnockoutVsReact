@@ -304,7 +304,9 @@
             <End Role="Music" EntitySet="Musics" />
             <End Role="Performer" EntitySet="Performers" />
           </AssociationSet>
-          <FunctionImport Name="GetMusics" ReturnType="Collection(MusicChoiceModel.GetMusics_Result)">
+          <FunctionImport Name="GetMusics">
+            <ReturnType Type="Collection(MusicChoiceModel.GetMusics_Result)"></ReturnType>
+            <ReturnType Type="Collection(MusicChoiceModel.Cast_Result)"></ReturnType>
             <Parameter Name="GenreID" Mode="InOut" Type="Int32" />
             <Parameter Name="ComposerID" Mode="InOut" Type="Int32" />
             <Parameter Name="CastID" Mode="InOut" Type="Int32" />
@@ -419,6 +421,10 @@
           <Property Type="Int32" Name="MusicID" Nullable="true" />
           <Property Type="String" Name="Music" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="Cast_Result">
+          <Property Type="Int32" Name="CastID" Nullable="true" />
+          <Property Type="String" Name="Cast" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -520,6 +526,12 @@
               <ComplexTypeMapping TypeName="MusicChoiceModel.GetMusics_Result">
                 <ScalarProperty Name="MusicID" ColumnName="MusicID" />
                 <ScalarProperty Name="Music" ColumnName="Music" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicChoiceModel.Cast_Result">
+                <ScalarProperty Name="CastID" ColumnName="CastID" />
+                <ScalarProperty Name="Cast" ColumnName="Cast" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

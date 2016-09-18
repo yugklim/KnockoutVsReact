@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MusicChoice.ViewModels;
 using MusicServices;
+using MusicServices.Services;
 
 namespace MusicChoice.Controllers
 {
@@ -18,6 +19,7 @@ namespace MusicChoice.Controllers
             int? performerID = null;
             int? castID = null;
 
+            MusicService.Get();
             IEnumerable<Album> albums = AlbumService.Get();
             IEnumerable<Genre> genres = GenreService.Get();
             IEnumerable<Composer> composers = ComposerService.Get();
