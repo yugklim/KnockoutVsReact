@@ -49,7 +49,10 @@
     <Compile Include="Album.cs">
       <DependentUpon>MusicChoice.tt</DependentUpon>
     </Compile>
+    <Compile Include="Album_Result.cs" />
     <Compile Include="Cast_Result.cs" />
+    <Compile Include="Composer_Result.cs" />
+    <Compile Include="Genre_Result.cs" />
     <Compile Include="GetMusics_Result.cs">
       <DependentUpon>MusicChoice.tt</DependentUpon>
     </Compile>
@@ -98,6 +101,7 @@
     <Compile Include="Services\MusicService.cs" />
     <Compile Include="Services\PerformerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Performer_Result.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="MusicChoice.edmx">
