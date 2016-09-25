@@ -9,17 +9,17 @@ namespace MusicServices.Services
 {
     public class MusicService
     {
-        public static void Get()
+        public static void Get(ref int? genreID, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID)
         {
             using (MusicChoiceEntities ctx = new MusicChoiceEntities())
             {
-                ObjectParameter genreID = new ObjectParameter("genreID", typeof(int?)) {Value = null};
-                ObjectParameter composerID = new ObjectParameter("composerID", typeof(int?)) { Value = null };
-                ObjectParameter castID = new ObjectParameter("castID", typeof(int?)) { Value = null };
-                ObjectParameter albumID = new ObjectParameter("albumID", typeof(int?)) { Value = null };
-                ObjectParameter performerID = new ObjectParameter("performerID", typeof(int?)) { Value = null };
+                ObjectParameter genreIDParameter = new ObjectParameter("genreID", typeof(int?)) { Value = genreID };
+                ObjectParameter composerIDParameter = new ObjectParameter("composerID", typeof(int?)) { Value = composerID };
+                ObjectParameter castIDParameter = new ObjectParameter("castID", typeof(int?)) { Value = castID };
+                ObjectParameter albumIDParameter = new ObjectParameter("albumID", typeof(int?)) { Value = albumID };
+                ObjectParameter performerIDParameter = new ObjectParameter("performerID", typeof(int?)) { Value = performerID };
 
-                ObjectResult<GetMusics_Result> musicsResults = ctx.GetMusics(genreID, composerID, castID, albumID, performerID);
+                ObjectResult<GetMusics_Result> musicsResults = ctx.GetMusics(genreIDParameter, composerIDParameter, castIDParameter, albumIDParameter, performerIDParameter);
                 GetMusics_Result[] musics = musicsResults.ToArray();
 
                 ObjectResult<Cast_Result> castResults = musicsResults.GetNextResult<Cast_Result>();
@@ -36,6 +36,51 @@ namespace MusicServices.Services
 
                 ObjectResult<Composer_Result> composerResults = genreResults.GetNextResult<Composer_Result>();
                 Composer_Result[] composers = composerResults.ToArray();
+
+                try
+                {
+                    genreID = (int?)genreIDParameter.Value;
+                }
+                catch (Exception)
+                {
+                    genreID = null;
+                }
+
+                try
+                {
+                    composerID = (int?)composerIDParameter.Value;
+                }
+                catch (Exception)
+                {
+                    composerID = null;
+                }
+
+                try
+                {
+                    albumID = (int?) albumIDParameter.Value;
+                }
+                catch (Exception)
+                {
+                    albumID = null;
+                }
+
+                try
+                {
+                    performerID = (int?)performerIDParameter.Value;
+                }
+                catch (Exception)
+                {
+                    performerID = null;
+                }
+
+                try
+                {
+                    castID = (int?)castIDParameter.Value;
+                }
+                catch (Exception)
+                {
+                    castID = null;
+                }
             }
         }
     }
