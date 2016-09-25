@@ -19,13 +19,16 @@ namespace MusicChoice.Controllers
             int? performerID = null;
             int? castID = null;
 
-            MusicService.Get(ref genreID, ref composerID, ref castID, ref albumID, ref performerID);
-            IEnumerable<Album> albums = AlbumService.Get();
-            IEnumerable<Genre> genres = GenreService.Get();
-            IEnumerable<Composer> composers = ComposerService.Get();
-            IEnumerable<Performer> performers = PerformerService.Get();
-            IEnumerable<Cast> casts = CastService.Get();
+            GetMusics_Result[] musics;
+            Cast_Result[] casts;
+            Album_Result[] albums;
+            Performer_Result[] performers;
+            Genre_Result[] genres;
+            Composer_Result[] composers;
 
+            MusicService.Get(ref genreID, ref composerID, ref castID, ref albumID, ref performerID,
+                 out musics, out casts, out albums, out performers, out genres, out composers);
+            
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
                 {
                     Albums = albums,

@@ -9,7 +9,10 @@ namespace MusicServices.Services
 {
     public class MusicService
     {
-        public static void Get(ref int? genreID, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID)
+        public static void Get(ref int? genreID, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID,
+            out GetMusics_Result[] musics, out Cast_Result[] casts, out Album_Result[] albums,
+            out Performer_Result[] performers, out Genre_Result[] genres, out Composer_Result[] composers
+            )
         {
             using (MusicChoiceEntities ctx = new MusicChoiceEntities())
             {
@@ -20,22 +23,22 @@ namespace MusicServices.Services
                 ObjectParameter performerIDParameter = new ObjectParameter("performerID", typeof(int?)) { Value = performerID };
 
                 ObjectResult<GetMusics_Result> musicsResults = ctx.GetMusics(genreIDParameter, composerIDParameter, castIDParameter, albumIDParameter, performerIDParameter);
-                GetMusics_Result[] musics = musicsResults.ToArray();
+                musics = musicsResults.ToArray();
 
                 ObjectResult<Cast_Result> castResults = musicsResults.GetNextResult<Cast_Result>();
-                Cast_Result[] casts = castResults.ToArray();
+                casts = castResults.ToArray();
 
                 ObjectResult<Album_Result> albumResults = castResults.GetNextResult<Album_Result>();
-                Album_Result[] albums = albumResults.ToArray();
+                albums = albumResults.ToArray();
 
                 ObjectResult<Performer_Result> performerResults = albumResults.GetNextResult<Performer_Result>();
-                Performer_Result[] performers = performerResults.ToArray();
+                performers = performerResults.ToArray();
 
                 ObjectResult<Genre_Result> genreResults = performerResults.GetNextResult<Genre_Result>();
-                Genre_Result[] genres = genreResults.ToArray();
+                genres = genreResults.ToArray();
 
                 ObjectResult<Composer_Result> composerResults = genreResults.GetNextResult<Composer_Result>();
-                Composer_Result[] composers = composerResults.ToArray();
+                composers = composerResults.ToArray();
 
                 try
                 {

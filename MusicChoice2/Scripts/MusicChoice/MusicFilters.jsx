@@ -52,22 +52,22 @@
                     this.state.genres.map(function (val, idx) {
                         return <div key={idx}>{val["Genre"]}
                             <input checked={musicFilters.areNullablesEqual(val["GenreID"], musicFilters.state.selected.genreID)} type="radio" name="genres" value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
-                            {val["Genre1"]} ({val["Musics"]})
+                            {val["Genre"]} ({val["Musics"]})
                         </div>
                         })
                     }
             </div>
             {
-                renderDropDown("Performers", "performers", this.state.performers, musicFilters.state.selected.performerID,  "PerformerID", "Performer1",  "performerID" )
+                renderDropDown("Performers", "performers", this.state.performers, musicFilters.state.selected.performerID,  "PerformerID", "Performer",  "performerID" )
             }
             {
-                renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, "ComposerID", "Composer1",  "composerID" )
+                renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, "ComposerID", "Composer",  "composerID" )
             }
             {
-                renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, "AlbumID", "Album1",  "albumID" )
+                renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, "AlbumID", "Album",  "albumID" )
             }
             {
-                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast1", "castID")
+                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast", "castID")
             }
 
             <div>
