@@ -127,7 +127,7 @@
         selected[selectedParameter] = parseInt($(e.currentTarget).val()) || null;
         this.setState(
             {selected: selected}
-            , this.raiseEvent.bind(this, eval(this.props.onFilterChanged))
+            , this.raiseEvent.bind(this, eval(this.props.onFilterChanged), selected)
         );
     },
 

@@ -52,6 +52,45 @@ namespace MusicChoice.Controllers
             return View(musicViewModel);
         }
 
+        [HttpGet]
+        public ActionResult FilterMusics(int? genreID, int? composerID, int? castID, int? albumID, int? performerID)
+        {
+            GetMusics_Result[] musics;
+            Cast_Result[] casts;
+            Album_Result[] albums;
+            Performer_Result[] performers;
+            Genre_Result[] genres;
+            Composer_Result[] composers;
+            
+            MusicService.Get(ref genreID, ref composerID, ref castID, ref albumID, ref performerID,
+                 out musics, out casts, out albums, out performers, out genres, out composers);
+
+            MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
+            {
+                Albums = albums,
+                Genres = genres,
+                Composers = composers,
+                Performers = performers,
+                Casts = casts,
+
+                AlbumID = albumID,
+                GenreID = genreID,
+                ComposerID = composerID,
+                PerformerID = performerID,
+                CastID = castID
+            };
+
+            MusicViewModel musicViewModel = new MusicViewModel()
+            {
+                Filters = musicFiltersViewModel
+            };
+
+            return Json(new
+            {
+                Filters = musicFiltersViewModel
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult RenderOnClient()
         {
             return View();
