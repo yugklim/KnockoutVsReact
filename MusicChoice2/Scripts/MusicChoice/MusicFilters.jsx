@@ -51,7 +51,7 @@
                 {
                     this.state.genres.map(function (val, idx) {
                         return <div key={idx}>{val["Genre"]}
-                            <input checked={musicFilters.areNullablesEqual(val["GenreID"], musicFilters.state.selected.genreID)} type="checkbox" name="genres" value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
+                            <input checked={musicFilters.areNullablesEqual(val["GenreID"], musicFilters.state.selected.genreID)} type="checkbox"  value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
                             {val["Genre"]} ({val["Musics"]})
                         </div>
                         })
