@@ -34,11 +34,14 @@ namespace MusicServices.Services
                 ObjectResult<Performer_Result> performerResults = albumResults.GetNextResult<Performer_Result>();
                 performers = performerResults.ToArray();
 
-                ObjectResult<Genre_Result> genreResults = performerResults.GetNextResult<Genre_Result>();
-                genres = genreResults.ToArray();
+                ObjectResult<Genre_Result> genreSelectedResults = performerResults.GetNextResult<Genre_Result>();
+                Genre_Result[] genresSelected = genreSelectedResults.ToArray();
 
-                ObjectResult<Composer_Result> composerResults = genreResults.GetNextResult<Composer_Result>();
+                ObjectResult<Composer_Result> composerResults = genreSelectedResults.GetNextResult<Composer_Result>();
                 composers = composerResults.ToArray();
+
+                ObjectResult<Genre_Result> genreResults = composerResults.GetNextResult<Genre_Result>();
+                genres = genreResults.ToArray();
 
                 try
                 {

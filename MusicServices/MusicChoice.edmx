@@ -311,6 +311,7 @@
             <ReturnType Type="Collection(MusicChoiceModel.Performer_Result)"></ReturnType>
             <ReturnType Type="Collection(MusicChoiceModel.Genre_Result)"></ReturnType>
             <ReturnType Type="Collection(MusicChoiceModel.Composer_Result)"></ReturnType>
+            <ReturnType Type="Collection(MusicChoiceModel.Genre_Result)"></ReturnType>
             
             <Parameter Name="GenreID" Mode="InOut" Type="Int32" />
             <Parameter Name="ComposerID" Mode="InOut" Type="Int32" />
@@ -577,6 +578,12 @@
               <ComplexTypeMapping TypeName="MusicChoiceModel.Composer_Result">
                 <ScalarProperty Name="ComposerID" ColumnName="ComposerID" />
                 <ScalarProperty Name="Composer" ColumnName="Composer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicChoiceModel.Genre_Result">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
