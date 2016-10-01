@@ -209,7 +209,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="GetMusics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="GenreID" Type="int" Mode="InOut" />
+          <Parameter Name="GenreIDs" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="ComposerID" Type="int" Mode="InOut" />
           <Parameter Name="CastID" Type="int" Mode="InOut" />
           <Parameter Name="AlbumID" Type="int" Mode="InOut" />
@@ -313,7 +313,7 @@
             <ReturnType Type="Collection(MusicChoiceModel.Composer_Result)"></ReturnType>
             <ReturnType Type="Collection(MusicChoiceModel.Genre_Result)"></ReturnType>
             
-            <Parameter Name="GenreID" Mode="InOut" Type="Int32" />
+            <Parameter Name="GenreIDs" Mode="In" Type="String" />
             <Parameter Name="ComposerID" Mode="InOut" Type="Int32" />
             <Parameter Name="CastID" Mode="InOut" Type="Int32" />
             <Parameter Name="AlbumID" Mode="InOut" Type="Int32" />

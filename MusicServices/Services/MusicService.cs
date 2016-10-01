@@ -16,7 +16,7 @@ namespace MusicServices.Services
         {
             using (MusicChoiceEntities ctx = new MusicChoiceEntities())
             {
-                ObjectParameter genreIDParameter = new ObjectParameter("genreID", typeof(int?)) { Value = genreID };
+                ObjectParameter genreIDParameter = new ObjectParameter("genreIDs", typeof(string)) { Value = ToCSV(genreIDs) };
                 ObjectParameter composerIDParameter = new ObjectParameter("composerID", typeof(int?)) { Value = composerID };
                 ObjectParameter castIDParameter = new ObjectParameter("castID", typeof(int?)) { Value = castID };
                 ObjectParameter albumIDParameter = new ObjectParameter("albumID", typeof(int?)) { Value = albumID };
@@ -42,15 +42,6 @@ namespace MusicServices.Services
 
                 ObjectResult<Genre_Result> genreResults = composerResults.GetNextResult<Genre_Result>();
                 genres = genreResults.ToArray();
-
-                try
-                {
-                    genreID = (int?)genreIDParameter.Value;
-                }
-                catch (Exception)
-                {
-                    genreID = null;
-                }
 
                 try
                 {
@@ -88,6 +79,11 @@ namespace MusicServices.Services
                     castID = null;
                 }
             }
+        }
+
+        private static string ToCSV(int[] genreIDs)
+        {
+            return string.Join(",", genreIDs);
         }
     }
 }

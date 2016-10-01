@@ -36,9 +36,9 @@ namespace MusicServices
         public DbSet<Music> Musics { get; set; }
         public DbSet<Performer> Performers { get; set; }
     
-        public virtual ObjectResult<GetMusics_Result> GetMusics(ObjectParameter genreID, ObjectParameter composerID, ObjectParameter castID, ObjectParameter albumID, ObjectParameter performerID)
+        public virtual ObjectResult<GetMusics_Result> GetMusics(ObjectParameter genreIDs, ObjectParameter composerID, ObjectParameter castID, ObjectParameter albumID, ObjectParameter performerID)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMusics_Result>("GetMusics", genreID, composerID, castID, albumID, performerID);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMusics_Result>("GetMusics", genreIDs, composerID, castID, albumID, performerID);
         }
     }
 }
