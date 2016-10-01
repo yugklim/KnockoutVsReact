@@ -9,7 +9,7 @@ namespace MusicServices.Services
 {
     public class MusicService
     {
-        public static void Get(ref int? genreID, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID,
+        public static void Get(ref int[] genreIDs, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID,
             out GetMusics_Result[] musics, out Cast_Result[] casts, out Album_Result[] albums,
             out Performer_Result[] performers, out Genre_Result[] genres, out Composer_Result[] composers
             )

@@ -14,7 +14,7 @@ namespace MusicChoice.Controllers
         public ActionResult Index()
         {
             int? albumID = null;
-            int? genreID = null;
+            int[] genreIDs = new int[] {1,2,3,4,5,6,7};
             int? composerID = null;
             int? performerID = null;
             int? castID = null;
@@ -26,7 +26,7 @@ namespace MusicChoice.Controllers
             Genre_Result[] genres;
             Composer_Result[] composers;
 
-            MusicService.Get(ref genreID, ref composerID, ref castID, ref albumID, ref performerID,
+            MusicService.Get(ref genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
                  out musics, out casts, out albums, out performers, out genres, out composers);
             
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
@@ -38,7 +38,7 @@ namespace MusicChoice.Controllers
                     Casts = casts,
 
                     AlbumID = albumID,
-                    GenreID = genreID,
+                    GenreIDs = genreIDs,
                     ComposerID = composerID,
                     PerformerID = performerID,
                     CastID = castID
@@ -53,7 +53,7 @@ namespace MusicChoice.Controllers
         }
 
         [HttpGet]
-        public ActionResult FilterMusics(int? genreID, int? composerID, int? castID, int? albumID, int? performerID)
+        public ActionResult FilterMusics(int[] genreIDs, int? composerID, int? castID, int? albumID, int? performerID)
         {
             GetMusics_Result[] musics;
             Cast_Result[] casts;
@@ -62,7 +62,7 @@ namespace MusicChoice.Controllers
             Genre_Result[] genres;
             Composer_Result[] composers;
             
-            MusicService.Get(ref genreID, ref composerID, ref castID, ref albumID, ref performerID,
+            MusicService.Get(ref genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
                  out musics, out casts, out albums, out performers, out genres, out composers);
 
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
@@ -74,7 +74,7 @@ namespace MusicChoice.Controllers
                 Casts = casts,
 
                 AlbumID = albumID,
-                GenreID = genreID,
+                GenreIDs = genreIDs,
                 ComposerID = composerID,
                 PerformerID = performerID,
                 CastID = castID

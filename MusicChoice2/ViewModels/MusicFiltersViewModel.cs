@@ -18,7 +18,7 @@ namespace MusicChoice.ViewModels
         public int? AlbumID { get; set; }
         public int? CastID { get; set; }
         public int? ComposerID { get; set; }
-        public int? GenreID { get; set; }
+        public int[] GenreIDs { get; set; }
         public int? PerformerID { get; set; }
     }
 }
