@@ -11,7 +11,7 @@ namespace MusicServices.Services
     {
         public static void Get(ref int[] genreIDs, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID,
             out GetMusics_Result[] musics, out Cast_Result[] casts, out Album_Result[] albums,
-            out Performer_Result[] performers, out Genre_Result[] genres, out Composer_Result[] composers
+            out Performer_Result[] performers, out Genre_Result[] genresFound, out Composer_Result[] composers, out Genre_Result[] genres
             )
         {
             using (MusicChoiceEntities ctx = new MusicChoiceEntities())
@@ -35,7 +35,7 @@ namespace MusicServices.Services
                 performers = performerResults.ToArray();
 
                 ObjectResult<Genre_Result> genreSelectedResults = performerResults.GetNextResult<Genre_Result>();
-                Genre_Result[] genresSelected = genreSelectedResults.ToArray();
+                genresFound = genreSelectedResults.ToArray();
 
                 ObjectResult<Composer_Result> composerResults = genreSelectedResults.GetNextResult<Composer_Result>();
                 composers = composerResults.ToArray();

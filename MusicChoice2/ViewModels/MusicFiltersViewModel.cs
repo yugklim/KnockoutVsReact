@@ -14,6 +14,7 @@ namespace MusicChoice.ViewModels
         public IEnumerable<Composer_Result> Composers { get; set; }
         public IEnumerable<Genre_Result> Genres { get; set; }
         public IEnumerable<Performer_Result> Performers { get; set; }
+        public IEnumerable<Genre_Result> GenresFound { get; set; }
 
         public int? AlbumID { get; set; }
         public int? CastID { get; set; }

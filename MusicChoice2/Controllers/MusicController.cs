@@ -23,15 +23,17 @@ namespace MusicChoice.Controllers
             Cast_Result[] casts;
             Album_Result[] albums;
             Performer_Result[] performers;
-            Genre_Result[] genres;
+            Genre_Result[] genresFound;
             Composer_Result[] composers;
+            Genre_Result[] genres;
 
             MusicService.Get(ref genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
-                 out musics, out casts, out albums, out performers, out genres, out composers);
+                 out musics, out casts, out albums, out performers, out genresFound, out composers, out genres);
             
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
                 {
                     Albums = albums,
+                    GenresFound = genresFound,
                     Genres = genres,
                     Composers = composers,
                     Performers = performers,
@@ -60,10 +62,11 @@ namespace MusicChoice.Controllers
             Album_Result[] albums;
             Performer_Result[] performers;
             Genre_Result[] genres;
+            Genre_Result[] genresFound;
             Composer_Result[] composers;
-            
+
             MusicService.Get(ref genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
-                 out musics, out casts, out albums, out performers, out genres, out composers);
+                 out musics, out casts, out albums, out performers, out genresFound, out composers, out genres);
 
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
             {

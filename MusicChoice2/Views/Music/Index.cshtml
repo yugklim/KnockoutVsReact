@@ -7,6 +7,13 @@
     ViewBag.Title = "title";
 }
 
+<script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+<script src="@Url.Content("~/Scripts/underscore-min.js")"></script>
+<script src="@Url.Content("~/Scripts/react.js")"></script>
+<script src="@Url.Content("~/Scripts/react-dom.js")"></script>
+<script src="@Url.Content("~/Scripts/MusicChoice/MusicFilters.jsx")"></script>
+<script src="@Url.Content("~/Scripts/MusicChoice/MusicChoice.js")"></script>
+
 <div>
     @Html.React("MusicFilters", new
     {
@@ -15,6 +22,7 @@
         composers = Model.Filters.Composers,
         genres = Model.Filters.Genres,
         performers = Model.Filters.Performers,
+        genresFound = Model.Filters.GenresFound,
         
         albumID = Model.Filters.AlbumID,
         castID = Model.Filters.CastID,
@@ -24,13 +32,6 @@
         onFilterChanged = "music.onFilterChanged"
     }, 
     "containerId")
-    
-    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/underscore-min.js")"></script>
-    <script src="@Url.Content("~/Scripts/react.js")"></script>
-    <script src="@Url.Content("~/Scripts/react-dom.js")"></script>
-    <script src="@Url.Content("~/Scripts/MusicChoice/MusicFilters.jsx")"></script>
-    <script src="@Url.Content("~/Scripts/MusicChoice/MusicChoice.js")"></script>
     
     @Html.ReactInitJavaScriptAndAssignIds(new[] { "music.filters" })
 </div>

@@ -10,13 +10,13 @@
         return {
               performers: this.props.performers
             , genres: this.props.genres
+            , genresFound: this.props.genresFound
             , musics: this.props.musics
             , albums: this.props.albums
             , composers: this.props.composers
             , casts: this.props.casts
             , selected: {
                   performerID: this.props.performerID
-                , genreID: this.props.genreID
                 , musicID: this.props.musicID
                 , albumID: this.props.albumID
                 , composerID: this.props.composerID
@@ -32,6 +32,15 @@
         var onFilterChanged = this.onFilterChanged;
         var onResetFilters = this.onResetFilters;
         var musicFilters = this;
+        var genresContains = function(genreID) {
+            var contains = false;
+            musicFilters.state.genresFound.forEach(function (g) {
+                if (g.GenreID == genreID) {
+                    contains = true;
+                }
+            });
+            return contains;
+        };
 
         var renderDropDown = function(title, id, values, selectedValue, optionIndex, optionValue, selectedParameter) {
             return  (values !== undefined && values !== null)? <div>{title + ':'}
@@ -51,7 +60,7 @@
                 {
                     this.state.genres.map(function (val, idx) {
                         return <div key={idx}>{val["Genre"]}
-                            <input checked={musicFilters.areNullablesEqual(val["GenreID"], musicFilters.state.selected.genreID)} type="checkbox"  value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
+                            <input checked={genresContains(val["GenreID"])} type="checkbox"  value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
                             {val["Genre"]} ({val["Musics"]})
                         </div>
                         })
