@@ -41,6 +41,7 @@
             });
             return contains;
         };
+        var onGenreChanged = this.onGenreChanged;
 
         var renderDropDown = function(title, id, values, selectedValue, optionIndex, optionValue, selectedParameter) {
             return  (values !== undefined && values !== null)? <div>{title + ':'}
@@ -56,11 +57,11 @@
 
         return (this.state.genres !== undefined && this.state.genres !== null)?
         <div>
-            <div>Genres:
+            <div id="genres">Genres:
                 {
                     this.state.genres.map(function (val, idx) {
                         return <div key={idx}>{val["Genre"]}
-                            <input checked={genresContains(val["GenreID"])} type="checkbox"  value={val["GenreID"]||null} onChange={onFilterChanged.bind(musicFilters, 'genreID')}/>
+                            <input checked={genresContains(val["GenreID"])} type="checkbox"  value={val["GenreID"]||null} onChange={onGenreChanged.bind(musicFilters)}/>
                             {val["Genre"]} ({val["Musics"]})
                         </div>
                         })
@@ -138,6 +139,16 @@
             {selected: selected}
             , this.raiseEvent.bind(this, eval(this.props.onFilterChanged), selected)
         );
+    },
+
+    onGenreChanged: function() {
+        var genresFound = [];
+        $("#genres").find("input:checked").map(function() {
+            genresFound.push({GenreID:$(this).val()});
+        });
+        var stateCopy = music.deepCopy(this.state);
+        stateCopy.genresFound = genresFound;
+        this.setState(stateCopy);
     },
 
     onResetFilters: function() {
