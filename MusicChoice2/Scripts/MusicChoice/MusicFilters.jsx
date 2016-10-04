@@ -144,11 +144,17 @@
     onGenreChanged: function() {
         var genresFound = [];
         $("#genres").find("input:checked").map(function() {
-            genresFound.push($(this).val());
+            genresFound.push(parseInt($(this).val()));
         });
         var stateCopy = music.deepCopy(this.state);
         stateCopy.genresFound = genresFound;
         this.setState(stateCopy);
+        music.reLoadDetailsAndFilters(
+            {genreIDs: genresFound,
+                performerID: this.state.selected.performerID,
+                albumID: this.state.selected.albumID,
+                composerID: this.state.selected.composerID,
+                castID: this.state.selected.castID});
     },
 
     onResetFilters: function() {

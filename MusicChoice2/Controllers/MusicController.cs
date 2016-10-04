@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using MusicChoice.ViewModels;
 using MusicServices;
@@ -54,8 +55,8 @@ namespace MusicChoice.Controllers
             return View(musicViewModel);
         }
 
-        [HttpGet]
-        public ActionResult FilterMusics(int[] genreIDs, int? composerID, int? castID, int? albumID, int? performerID)
+        [System.Web.Mvc.HttpGet]
+        public ActionResult FilterMusics([FromUri] IEnumerable<int> genreIDs, int? composerID, int? castID, int? albumID, int? performerID)
         {
             GetMusics_Result[] musics;
             Cast_Result[] casts;
@@ -65,7 +66,8 @@ namespace MusicChoice.Controllers
             Genre_Result[] genresFound;
             Composer_Result[] composers;
 
-            MusicService.Get(ref genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
+            int[] array = genreIDs.ToArray();
+            MusicService.Get(ref array, ref composerID, ref castID, ref albumID, ref performerID,
                  out musics, out casts, out albums, out performers, out genresFound, out composers, out genres);
 
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
@@ -78,7 +80,7 @@ namespace MusicChoice.Controllers
                 Casts = casts,
 
                 AlbumID = albumID,
-                GenreIDs = genreIDs,
+                GenreIDs = array,
                 ComposerID = composerID,
                 PerformerID = performerID,
                 CastID = castID
