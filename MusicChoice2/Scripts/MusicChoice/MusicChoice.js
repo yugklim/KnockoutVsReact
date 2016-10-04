@@ -4,22 +4,7 @@
     }
 
     music.reLoadDetailsAndFilters = function(selected) {
-        //$.ajax({
-        //    url: '/Music/FilterMusics',
-        //    type: 'GET',
-        //    data: {
-        //        genreIDs: [1, 2, 3],
-        //        "composerID": 1, "albumID": 2, "performerID": 3, "castID": 4
-        //    },
-        //    traditional: true,
-        //    success: function (result) {
-        //        console.log(JSON.stringify(result));
-        //    }
-        //});
-        //return;
-        //
-        //$.get("/Music/FilterMusics", ({"composerID": 1, "albumID": 2, "performerID": 3, "castID": 4, "genreIDs": "[1,2]"}));
-        //return;
+
         $.ajax({
                         url: "/Music/FilterMusics",
                         type: "GET",
@@ -28,8 +13,6 @@
                             "composerID": selected.composerID, "albumID": selected.albumID, "performerID": selected.performerID, "castID": selected.castID
                         },
                         traditional: true,
-                        //processData: false,
-                        //contentType: "application/json",
                         timeout: 30000,
                         success: function(result) {
                             music.filters.setState(

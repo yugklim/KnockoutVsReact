@@ -9,7 +9,7 @@ namespace MusicServices.Services
 {
     public class MusicService
     {
-        public static void Get(ref int[] genreIDs, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID,
+        public static void Get(IEnumerable<int> genreIDs, ref int? composerID, ref int? castID, ref int? albumID, ref int? performerID,
             out GetMusics_Result[] musics, out Cast_Result[] casts, out Album_Result[] albums,
             out Performer_Result[] performers, out Genre_Result[] genresFound, out Composer_Result[] composers, out Genre_Result[] genres
             )
@@ -81,9 +81,9 @@ namespace MusicServices.Services
             }
         }
 
-        private static string ToCSV(int[] genreIDs)
+        private static string ToCSV(IEnumerable<int> genreIDs)
         {
-            return string.Join(",", genreIDs);
+            return ((genreIDs == null) || !genreIDs.Any()) ? null : string.Join(",", genreIDs);
         }
     }
 }
