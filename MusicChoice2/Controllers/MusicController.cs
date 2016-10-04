@@ -33,7 +33,7 @@ namespace MusicChoice.Controllers
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
                 {
                     Albums = albums,
-                    GenresFound = genresFound,
+                    GenresFound = genresFound.Select(g => g.GenreID),
                     Genres = genres,
                     Composers = composers,
                     Performers = performers,
@@ -71,6 +71,7 @@ namespace MusicChoice.Controllers
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
             {
                 Albums = albums,
+                GenresFound = genresFound.Select(g => g.GenreID),
                 Genres = genres,
                 Composers = composers,
                 Performers = performers,
@@ -88,10 +89,7 @@ namespace MusicChoice.Controllers
                 Filters = musicFiltersViewModel
             };
 
-            return Json(new
-            {
-                Filters = musicFiltersViewModel
-            }, JsonRequestBehavior.AllowGet);
+            return Json(musicViewModel, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RenderOnClient()

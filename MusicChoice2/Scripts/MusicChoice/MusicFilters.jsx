@@ -35,7 +35,7 @@
         var genresContains = function(genreID) {
             var contains = false;
             musicFilters.state.genresFound.forEach(function (g) {
-                if (g.GenreID == genreID) {
+                if (g == genreID) {
                     contains = true;
                 }
             });
@@ -144,7 +144,7 @@
     onGenreChanged: function() {
         var genresFound = [];
         $("#genres").find("input:checked").map(function() {
-            genresFound.push({GenreID:$(this).val()});
+            genresFound.push($(this).val());
         });
         var stateCopy = music.deepCopy(this.state);
         stateCopy.genresFound = genresFound;
