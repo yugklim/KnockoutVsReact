@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="Controllers\MusicController.cs" />
+    <Compile Include="Controllers\MusicViaKnockoutController.cs" />
     <Compile Include="Controllers\MusicWebAPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Music\RenderOnClient.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MusicViaKnockout\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
