@@ -15,6 +15,12 @@
     <script src="@Url.Content("~/Scripts/Knockout/music.js")"></script>
 </head>
 <body>
+<div data-bind="foreach: genres">
+    <div>
+        <input type="checkbox" data-bind="value: GenreID, checked: $root.genresFound">
+        <span data-bind="text: Genre"></span>
+    </div>
+</div>
 <div>
     Performers: <select data-bind="options: performers, optionsText: 'Performer', optionsValue: 'PerformerID'"></select>
 </div>

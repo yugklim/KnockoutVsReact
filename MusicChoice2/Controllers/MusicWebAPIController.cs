@@ -35,6 +35,7 @@ namespace MusicChoice2.Controllers
             MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
             {
                 Albums = albums,
+                GenresFound = genresFound.Select(g => g.GenreID),
                 Genres = genres,
                 Composers = composers,
                 Performers = performers,
