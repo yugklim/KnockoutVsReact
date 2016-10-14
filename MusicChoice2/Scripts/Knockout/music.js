@@ -7,7 +7,7 @@
         composers: [],
         albums: [],
         casts: []
-};
+    };
 
     $.getJSON("/api/MusicWebAPI", function (data) {
         musicViewModel.genres = data.Filters.Genres;
@@ -18,6 +18,7 @@
         musicViewModel.casts = data.Filters.Casts;
 
         ko.applyBindings(musicViewModel);
+
     });
 
     
