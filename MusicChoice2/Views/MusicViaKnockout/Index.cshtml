@@ -17,7 +17,7 @@
 <body>
 <div data-bind="foreach: genres">
     <div>
-        <input type="checkbox" data-bind="value: GenreID, checked: $root.genresFound, event: {change: $root.genresChanged}">
+        <input type="checkbox" data-bind="value: GenreID, checked: $root.genresFound, event: {change: genresChanged}">
         <span class="js-genres" data-bind="text: Genre"></span>
     </div>
 </div>
