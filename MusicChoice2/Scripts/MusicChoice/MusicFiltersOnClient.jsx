@@ -15,6 +15,7 @@
                     casts = {data.Filters.Casts}
                     composers = {data.Filters.Composers}
                     performers = {data.Filters.Performers}
+                    musics = {data.Filters.Musics}
 
                     albumID = {data.Filters.AlbumID}
                     castID = {data.Filters.CastID}

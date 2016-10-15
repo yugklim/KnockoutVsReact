@@ -30,7 +30,6 @@
 
     render: function() {
         var onFilterChanged = this.onFilterChanged;
-        var onResetFilters = this.onResetFilters;
         var musicFilters = this;
         var genresContains = function(genreID) {
             var contains = false;
@@ -80,11 +79,17 @@
                 renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast", "castID")
             }
 
-            <div>
-                <input type="button" value="Reset Filters" onClick={onResetFilters.bind(musicFilters)}/>
+            <div>Musics:
+                    <table>
+                        {
+                            this.state.musics.map(function (val, idx) {
+                                    return <tr><td>{val["Music"]}</td></tr>;
+                                })
+                            }
+                    </table>
             </div>
         </div>:
-            <div>No data</div>;
+        <div>No data</div>;
     },
 
     componentDidMount: function() {
@@ -155,21 +160,6 @@
                 albumID: this.state.selected.albumID,
                 composerID: this.state.selected.composerID,
                 castID: this.state.selected.castID});
-    },
-
-    onResetFilters: function() {
-        this.setState(
-            { selected: {
-                companyStatusTypeID: null
-                , introducerID: null
-                , countryID: null
-                , dealerID: null
-                , sellCurrencyID: null
-                , buyCurrencyID: null
-                , industryCategorizationID: null }
-            },
-            this.raiseEvent.bind(this, eval(this.props.onFilterChanged))
-        );
     },
 
     areNullablesEqual: function(first, second) {
