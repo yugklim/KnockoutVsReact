@@ -6,7 +6,8 @@
         performers: ko.observableArray(),
         composers: ko.observableArray(),
         albums: ko.observableArray(),
-        casts: ko.observableArray()
+        casts: ko.observableArray(),
+        musics: ko.observableArray()
     };
 
     mapServerData = function(data) {
@@ -17,6 +18,7 @@
         musicViewModel.composers(data.Filters.Composers);
         musicViewModel.albums(data.Filters.Albums);
         musicViewModel.casts(data.Filters.Casts);
+        musicViewModel.musics(data.Filters.Musics);
     },
 
     genresChanged = function (data, event) {

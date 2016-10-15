@@ -40,6 +40,7 @@ namespace MusicChoice2.Controllers
                 Composers = composers,
                 Performers = performers,
                 Casts = casts,
+                Musics = musics,
 
                 AlbumID = albumID,
                 ComposerID = composerID,

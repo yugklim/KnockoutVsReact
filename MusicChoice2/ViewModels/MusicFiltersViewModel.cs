@@ -20,5 +20,6 @@ namespace MusicChoice.ViewModels
         public int? CastID { get; set; }
         public int? ComposerID { get; set; }
         public int? PerformerID { get; set; }
+        public GetMusics_Result[] Musics { get; set; }
     }
 }
