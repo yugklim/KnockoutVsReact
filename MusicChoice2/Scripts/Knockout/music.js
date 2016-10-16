@@ -15,9 +15,13 @@
         musicViewModel.genres(data.Filters.Genres);
         musicViewModel.genresFound(data.Filters.GenresFound);
         musicViewModel.performers( data.Filters.Performers);
+        musicViewModel.performers.unshift({PerformerID: -1, Performer: 'All'});
         musicViewModel.composers(data.Filters.Composers);
+        musicViewModel.composers.unshift({ComposerID: -1, Composer: 'All'});
         musicViewModel.albums(data.Filters.Albums);
+        musicViewModel.albums.unshift({AlbumID: -1, Album: 'All'});
         musicViewModel.casts(data.Filters.Casts);
+        musicViewModel.casts.unshift({CastID: -1, Cast: 'All'});
         musicViewModel.musics(data.Filters.Musics);
     },
 
