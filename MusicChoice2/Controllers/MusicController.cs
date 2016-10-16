@@ -23,37 +23,8 @@ namespace MusicChoice.Controllers
         [System.Web.Mvc.HttpGet]
         public ActionResult FilterMusics([FromUri] IEnumerable<int> genreIDs, int? composerID, int? castID, int? albumID, int? performerID)
         {
-            GetMusics_Result[] musics;
-            Cast_Result[] casts;
-            Album_Result[] albums;
-            Performer_Result[] performers;
-            Genre_Result[] genres;
-            Genre_Result[] genresFound;
-            Composer_Result[] composers;
-
-            MusicService.Get(genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
-                 out musics, out casts, out albums, out performers, out genresFound, out composers, out genres);
-
-            MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
-            {
-                Albums = albums,
-                GenresFound = genresFound.Select(g => g.GenreID),
-                Genres = genres,
-                Composers = composers,
-                Performers = performers,
-                Casts = casts,
-
-                AlbumID = albumID,
-                ComposerID = composerID,
-                PerformerID = performerID,
-                CastID = castID
-            };
-
-            MusicViewModel musicViewModel = new MusicViewModel()
-            {
-                Filters = musicFiltersViewModel
-            };
-
+            MusicWebAPIController musicWebApiController = new MusicWebAPIController();
+            MusicViewModel musicViewModel = musicWebApiController.FilterMusics(genreIDs, composerID, castID, albumID, performerID);
             return Json(musicViewModel, JsonRequestBehavior.AllowGet);
         }
 

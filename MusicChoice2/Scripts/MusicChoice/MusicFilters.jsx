@@ -79,13 +79,18 @@
                 renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast", "castID")
             }
 
-            <div>Musics:
+            <div>
+                Musics:
+            </div>
+            <div style={{"overflow-y": "scroll", "height": "65%"}}>
                     <table>
+                        <tbody>
                         {
                             this.state.musics.map(function (val, idx) {
                                     return <tr><td>{val["Music"]}</td></tr>;
                                 })
-                            }
+                        }
+                        </tbody>
                     </table>
             </div>
         </div>:

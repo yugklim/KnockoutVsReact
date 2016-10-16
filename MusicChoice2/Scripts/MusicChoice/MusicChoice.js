@@ -19,15 +19,14 @@
                                 {
                                     performers: result.Filters.Performers
                                     , genres: result.Filters.Genres
-                                    , musics: result.Filters.musics
-                                    , albums: result.Filters.albums
+                                    , musics: result.Filters.Musics
+                                    , albums: result.Filters.Albums
                                     , composers: result.Filters.Composers
                                     , casts: result.Filters.Casts
 
                         , selected: {
                                         performerID: result.Filters.PerformerID
                                         , genreID: result.Filters.GenreID
-                                        //, musicID: this.props.musicID
                                         , albumID: result.Filters.AlbumID
                                         , composerID: result.Filters.ComposerID
                                         , castID: result.Filters.CastID
