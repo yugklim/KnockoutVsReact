@@ -45,6 +45,7 @@
         var renderDropDown = function(title, id, values, selectedValue, optionIndex, optionValue, selectedParameter) {
             return  (values !== undefined && values !== null)? <div>{title + ':'}
                 <select id={id} value={selectedValue || -1} onChange={onFilterChanged.bind(musicFilters, selectedParameter)}>
+                    <option key={-1} value={-1}>All</option>
                     {
                         values.map(function (val, idx) {
                                 return <option key={idx} value={val[optionIndex]}>{val[optionValue]}</option>
@@ -98,13 +99,6 @@
     },
 
     componentDidMount: function() {
-        //this.selected = {
-        //    introducerID: this.props.introducerID
-        //    , companyStatusTypeID: null
-        //    , countryID: null
-        //    , dealerID: null
-        //    , page: 1
-        //};
     },
 
 // end of instantiation methods
