@@ -35,12 +35,13 @@
 </div>
 <div>
     Musics:
-    <br>
-    <table data-bind="foreach: musics">
-        <tr>
-            <td><div data-bind="text: Music"></div></td>
-        </tr>
-    </table>
+    <div style="overflow-y: scroll; height: 500px">
+        <table data-bind="foreach: musics">
+            <tr>
+                <td><div data-bind="text: Music"></div></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>
