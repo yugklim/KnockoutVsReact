@@ -1,4 +1,4 @@
-﻿(function (musicChoice) {
+﻿(function (music) {
 
     $.ajax({
         type: "GET",
@@ -7,7 +7,7 @@
         success: function (response)
         {
             var data = JSON.parse(response);
-            musicChoice.filters = ReactDOM.render(
+            music.filters = ReactDOM.render(
                 <MusicFilters
                     albums = {data.Filters.Albums}
                     genres = {data.Filters.Genres}
@@ -30,4 +30,4 @@
         }
     });
 
-}(window.musicChoice = window.musicChoice || {}));
+}(window.music = window.music || {}));

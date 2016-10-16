@@ -21,39 +21,7 @@ namespace MusicChoice2.Controllers
             int? performerID = null;
             int? castID = null;
 
-            GetMusics_Result[] musics;
-            Cast_Result[] casts;
-            Album_Result[] albums;
-            Performer_Result[] performers;
-            Genre_Result[] genres;
-            Genre_Result[] genresFound;
-            Composer_Result[] composers;
-
-            MusicService.Get(genreIDs, ref composerID, ref castID, ref albumID, ref performerID,
-                 out musics, out casts, out albums, out performers, out genresFound, out composers, out genres);
-
-            MusicFiltersViewModel musicFiltersViewModel = new MusicFiltersViewModel()
-            {
-                Albums = albums,
-                GenresFound = genresFound.Select(g => g.GenreID),
-                Genres = genres,
-                Composers = composers,
-                Performers = performers,
-                Casts = casts,
-                Musics = musics,
-
-                AlbumID = albumID,
-                ComposerID = composerID,
-                PerformerID = performerID,
-                CastID = castID
-            };
-
-            MusicViewModel musicViewModel = new MusicViewModel()
-            {
-                Filters = musicFiltersViewModel
-            };
-
-            return musicViewModel;
+            return FilterMusics(genreIDs, composerID, castID, albumID, performerID);
         }
 
         public MusicViewModel FilterMusics([FromUri] IEnumerable<int> genreIDs, int? composerID, int? castID, int? albumID, int? performerID)
@@ -91,28 +59,6 @@ namespace MusicChoice2.Controllers
             };
 
             return musicViewModel;
-        }
-
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }
