@@ -13,34 +13,46 @@
     <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
     <script src="@Url.Content("~/Scripts/underscore-min.js")"></script>
     <script src="@Url.Content("~/Scripts/Knockout/music.js")"></script>
+    <link rel="stylesheet" href="../../Styles/music.css">
 </head>
 <body>
-<div data-bind="foreach: genres">
-    <div>
-        <input type="checkbox" data-bind="value: GenreID, checked: $root.genresFound, event: {change: genresChanged}">
-        <span class="js-genres" data-bind="text: Genre"></span>
+<div>
+    <div class="genres">
+        Genres:
+        <div data-bind="foreach: genres">
+            <div>
+                <input type="checkbox" data-bind="value: GenreID, checked: $root.genresFound, event: {change: genresChanged}">
+                <span class="js-genres" data-bind="text: Genre"></span>
+            </div>
+        </div>
+    </div>
+    <div class="selects">
+        <div>
+            <label>Performers:</label> <select data-bind="options: performers, optionsText: 'Performer', optionsValue: 'PerformerID'"></select>
+        </div>
+        <div>
+            <label>Composers:</label> <select data-bind="options: composers, optionsText: 'Composer', optionsValue: 'ComposerID'"></select>
+        </div>
+        <div>
+            <label>Albums:</label> <select data-bind="options: albums, optionsText: 'Album', optionsValue: 'AlbumID'"></select>
+        </div>
+        <div>
+            <label style="clear: both">Casts:</label> <select data-bind="options: casts, optionsText: 'Cast', optionsValue: 'CastID'"></select>
+        </div>
     </div>
 </div>
-<div>
-    Performers: <select data-bind="options: performers, optionsText: 'Performer', optionsValue: 'PerformerID'"></select>
-</div>
-<div>
-    Composers: <select data-bind="options: composers, optionsText: 'Composer', optionsValue: 'ComposerID'"></select>
-</div>
-<div>
-    Albums: <select data-bind="options: albums, optionsText: 'Album', optionsValue: 'AlbumID'"></select>
-</div>
-<div>
-    Casts: <select data-bind="options: casts, optionsText: 'Cast', optionsValue: 'CastID'"></select>
-</div>
-<div>
-    Musics:
-    <div style="overflow-y: scroll; height: 500px">
-        <table data-bind="foreach: musics">
-            <tr>
-                <td><div data-bind="text: Music"></div></td>
-            </tr>
-        </table>
+<div class="musicContainer">
+    <div class="musics">
+        Musics:
+        <div style="overflow-y: scroll; height: 500px">
+            <table data-bind="foreach: musics">
+                <tr>
+                    <td>
+                        <div data-bind="text: Music"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 </body>

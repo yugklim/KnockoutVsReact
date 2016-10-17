@@ -1,0 +1,29 @@
+﻿.genres {
+    float: left; 
+    margin-left: 10px;   
+}
+
+ .selects {
+     float: left; 
+     width: 200px;
+     margin-left: 33px;
+     margin-top: 2px;
+}
+
+ label {
+     float: left;
+ }
+
+ select {
+     float: right;
+     width: 100px;
+ }
+
+ .musicContainer {
+     clear: left;
+ }
+
+.musics {
+    margin-left: 10px;
+    padding-top: 30px;
+}
