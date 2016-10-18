@@ -42,8 +42,9 @@
         };
         var onGenreChanged = this.onGenreChanged;
 
-        var renderDropDown = function(title, id, values, selectedValue, optionIndex, optionValue, selectedParameter) {
-            return  (values !== undefined && values !== null)? <div>{title + ':'}
+        var renderDropDown = function(title, id, values, selectedValue, optionIndex, optionValue, selectedParameter, labelStyle) {
+            return  (values !== undefined && values !== null)? <div>
+                <label style={labelStyle}>{title + ':'}</label>
                 <select id={id} value={selectedValue || -1} onChange={onFilterChanged.bind(musicFilters, selectedParameter)}>
                     <option key={-1} value={-1}>All</option>
                     {
@@ -57,42 +58,51 @@
 
         return (this.state.genres !== undefined && this.state.genres !== null)?
         <div>
-            <div id="genres">Genres:
-                {
-                    this.state.genres.map(function (val, idx) {
-                        return <div key={idx}>{val["Genre"]}
-                            <input checked={genresContains(val["GenreID"])} type="checkbox"  value={val["GenreID"]||null} onChange={onGenreChanged.bind(musicFilters)}/>
-                            {val["Genre"]} ({val["Musics"]})
-                        </div>
-                        })
-                    }
-            </div>
-            {
-                renderDropDown("Performers", "performers", this.state.performers, musicFilters.state.selected.performerID,  "PerformerID", "Performer",  "performerID" )
-            }
-            {
-                renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, "ComposerID", "Composer",  "composerID" )
-            }
-            {
-                renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, "AlbumID", "Album",  "albumID" )
-            }
-            {
-                renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast", "castID")
-            }
-
             <div>
-                Musics:
-            </div>
-            <div style={{"overflow-y": "scroll", "height": "65%"}}>
-                    <table>
-                        <tbody>
+                <div>
+                    <div className="genres" id="genres">
+                        <div style={{"font-weight":"bold"}}>Genres:</div>
                         {
-                            this.state.musics.map(function (val, idx) {
-                                    return <tr><td>{val["Music"]}</td></tr>;
+                            this.state.genres.map(function (val, idx) {
+                                return <div key={idx}>
+                                    <input checked={genresContains(val["GenreID"])} type="checkbox"  value={val["GenreID"]||null} onChange={onGenreChanged.bind(musicFilters)}/>
+                                    <span className="js-genres">{val["Genre"]}</span>
+                                </div>
                                 })
-                        }
-                        </tbody>
-                    </table>
+                            }
+                    </div>
+                    <div className="selects">
+                        {
+                            renderDropDown("Performers", "performers", this.state.performers, musicFilters.state.selected.performerID,  "PerformerID", "Performer",  "performerID" )
+                            }
+                        {
+                            renderDropDown("Composers", "composers", this.state.composers, musicFilters.state.selected.composerID, "ComposerID", "Composer",  "composerID" )
+                            }
+                        {
+                            renderDropDown("Albums", "albums", this.state.albums, musicFilters.state.selected.albumID, "AlbumID", "Album",  "albumID" )
+                            }
+                        {
+                            renderDropDown("Casts", "casts", this.state.casts, musicFilters.state.selected.castID, "CastID", "Cast", "castID", {clear:"both"})
+                            }
+                    </div>
+                </div>
+
+                <div className="musicContainer">
+                    <div className="musics">
+                        <label>Musics:</label><br/>
+                        <div style={{"overflow-y": "scroll", "height": "500px"}}>
+                                <table>
+                                    <tbody>
+                                    {
+                                        this.state.musics.map(function (val, idx) {
+                                                return <tr><td>{val["Music"]}</td></tr>;
+                                            })
+                                    }
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>:
         <div>No data</div>;
