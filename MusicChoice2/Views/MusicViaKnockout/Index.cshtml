@@ -18,7 +18,7 @@
 <body>
 <div>
     <div class="genres">
-        Genres:
+        <div style="font-weight: bold">Genres:</div>
         <div data-bind="foreach: genres">
             <div>
                 <input type="checkbox" data-bind="value: GenreID, checked: $root.genresFound, event: {change: genresChanged}">
@@ -43,7 +43,7 @@
 </div>
 <div class="musicContainer">
     <div class="musics">
-        Musics:
+        <label>Musics:</label><br/>
         <div style="overflow-y: scroll; height: 500px">
             <table data-bind="foreach: musics">
                 <tr>

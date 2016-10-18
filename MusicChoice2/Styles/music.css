@@ -12,6 +12,7 @@
 
  label {
      float: left;
+     font-weight: bold;
  }
 
  select {
