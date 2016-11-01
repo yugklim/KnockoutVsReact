@@ -48,6 +48,4 @@
         mapServerData(data);
         ko.applyBindings(musicViewModel);
     });
-
-    
 });
